@@ -8,3 +8,4 @@
 #### 因项目特殊性，本项目有随时跑路的风险（
 
 ~~代码都是让GPT搓的，没啥技术含量（（~~
+![访问统计](https://count.getloli.com/get/@:opsroneclick?theme=moebooru)
