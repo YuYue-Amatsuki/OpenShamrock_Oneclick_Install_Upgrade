@@ -1,6 +1,6 @@
 # OpenShamrock_Oneclick_Install_Upgrade
-给你的安卓设备一键安装&amp;更新OpenShamrock
-## Windows端需要配置adb环境，安卓端需配置相应环境（如[Magisk](https://github.com/topjohnwu/Magisk)+[LSPosed](https://github.com/LSPosed/LSPosed)）才可正常使用
+给你的Android设备一键安装&amp;更新OpenShamrock
+## PC端需要配置[adb环境](https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn#downloads)，Android端需配置相应环境（如[Magisk](https://github.com/topjohnwu/Magisk)+[LSPosed](https://github.com/LSPosed/LSPosed)）才可正常使用
 
 ### 使用方法
 在开发者模式内打开USB调试并允许连接即可享用
