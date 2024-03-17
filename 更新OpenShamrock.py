@@ -69,7 +69,7 @@ file_path = os.path.join(script_dir, file_name)
 # 保存文件并显示下载进度条
 with open(file_path, 'wb') as f:
     total_length = int(file_request.headers.get('content-length'))
-    for chunk in tqdm(file_request.iter_content(chunk_size=8192), total=round(total_length/8192), unit='KB', bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]', desc=file_name):
+    for chunk in tqdm(file_request.iter_content(chunk_size=8192), total=round(total_length/8192), unit='KB', bar_format='{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]', dynamic_ncols=True, desc=file_name):
         if chunk:
             f.write(chunk)
 
