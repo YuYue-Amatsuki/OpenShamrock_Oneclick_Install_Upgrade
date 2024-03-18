@@ -17,6 +17,7 @@
 **因项目特殊性，本项目有随时跑路的风险（**
 
 ~~代码都是让GPT搓的，没啥技术含量（（~~
+
 ![访问统计](https://count.getloli.com/get/@:opsroneclick?theme=moebooru)
 
 [banner]: https://socialify.git.ci/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/image?description=1&font=Raleway&forks=1&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FYuYue-Amatsuki%2FOpenShamrock_Oneclick_Install_Upgrade%2Fmain%2Ficon.jpg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto
