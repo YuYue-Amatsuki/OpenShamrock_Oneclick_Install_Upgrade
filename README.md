@@ -1,5 +1,12 @@
-# OpenShamrock_Oneclick_Install_Upgrade
-给你的Android设备一键安装&amp;更新OpenShamrock
+<div align="center">
+  
+![][banner]
+
+[![][releases]][releases-link]
+[![][license]](LICENSE)
+
+</div>
+
 ## PC端需要配置[adb环境](https://developer.android.google.cn/tools/releases/platform-tools?hl=zh-cn#downloads)，Android端需配置相应环境（如[Magisk](https://github.com/topjohnwu/Magisk)+[LSPosed](https://github.com/LSPosed/LSPosed)）才可正常使用
 
 ### 使用方法
@@ -11,3 +18,8 @@
 
 ~~代码都是让GPT搓的，没啥技术含量（（~~
 ![访问统计](https://count.getloli.com/get/@:opsroneclick?theme=moebooru)
+
+[banner]: https://socialify.git.ci/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/image?description=1&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto
+[releases]: https://img.shields.io/github/v/release/YuYue-AmatsukiOpenShamrock_Oneclick_Install_Upgrade?style=for-the-badge
+[license]: https://img.shields.io/github/license//YuYue-AmatsukiOpenShamrock_Oneclick_Install_Upgrade?style=for-the-badge
+[releases-link]: [https://github.com/whitechi73/OpenShamrock/releases](https://github.com/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/releases/latest)https://github.com/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/releases/latest
