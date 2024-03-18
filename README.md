@@ -14,7 +14,7 @@
 
 如果是网络连接Android设备，打开USB调试后再打开无线调试，在里面找到你的Android设备的IP地址与端口号，在PC上打开终端并输入`adb connect [你的Android设备IP地址:端口号]`允许连接后即可连接你的Android设备，之后使用该项目即可
 
-#### 因项目特殊性，本项目有随时跑路的风险（
+**因项目特殊性，本项目有随时跑路的风险（**
 
 ~~代码都是让GPT搓的，没啥技术含量（（~~
 ![访问统计](https://count.getloli.com/get/@:opsroneclick?theme=moebooru)
