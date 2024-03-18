@@ -7,6 +7,7 @@ import io
 from tqdm import tqdm
 import logging
 import os
+import time
 
 url = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/master?preview'
 
@@ -35,16 +36,23 @@ html_content = response.text
 download_links = re.findall(r'href=[\'"](.*?)[\'"]', html_content)
 
 # 提示用户选择 CPU 架构
-print("请选择对应的CPU架构：")
-for idx, architecture in enumerate(architectures.keys()):
-    print(f"{idx+1}. {architecture}")
+selected_architecture = None
 
-selected_architecture_idx = int(input("请输入序号："))
-while selected_architecture_idx not in range(1, len(architectures) + 1):
-    print("无效的选择，请重新输入：")
-    selected_architecture_idx = int(input("请输入序号："))
+while selected_architecture is None:
+    print("请选择对应的CPU架构：")
+    for idx, architecture in enumerate(architectures.keys()):
+        print(f"{idx+1}. {architecture}")
 
-selected_architecture = list(architectures.keys())[selected_architecture_idx - 1]
+    user_input = input("请输入序号：")
+    
+    if user_input.isdigit():
+        selected_architecture_idx = int(user_input)
+        if selected_architecture_idx in range(1, len(architectures) + 1):
+            selected_architecture = list(architectures.keys())[selected_architecture_idx - 1]
+        else:
+            print("无效的选择，请重新输入：")
+    else:
+        print("无效的选择，请重新输入：")
 
 # 根据选择的 CPU 架构获取对应的下载链接
 selected_download_link = None
@@ -52,10 +60,6 @@ for link in download_links:
     if re.match(architectures[selected_architecture], link):
         selected_download_link = link
         break
-
-if selected_download_link is None:
-    logger.info(f"{datetime.datetime.now()} - 未找到对应的下载链接，请检查选择的 CPU 架构是否正确。")
-    exit()
 
 file_request = requests.get(selected_download_link, stream=True)
 file_name = selected_download_link.split('/')[-1]
@@ -88,28 +92,45 @@ with zipfile.ZipFile(file_path, 'r') as zip_ref:
 # 删除原始的ZIP文件
 os.remove(file_path)
 
-# 列出连接到计算机上的所有安卓设备的序号和设备信息
-adb_devices = subprocess.run(['adb', 'devices'], capture_output=True, text=True).stdout
-# 检查是否存在连接的设备
-if "List of devices attached" not in adb_devices:
-    logger.info("{datetime.datetime.now()} - 未检测到已连接的设备，请连接设备后重新运行程序。")
-else:
+selected_device = None
+
+while selected_device is None:
+    adb_devices = subprocess.run(['adb', 'devices'], capture_output=True, text=True).stdout
+
+    if "List of devices attached" not in adb_devices:
+        print(f"{datetime.datetime.now()} - 未检测到已连接的设备，请连接设备后重新运行程序。")
+        print("程序将在5秒后退出")
+        time.sleep(5)
+        exit()
+
     devices_list = adb_devices.split('\n')[1:-2]  # 去除开头和结尾多余信息
+    
+    if not devices_list:
+        print(f"{datetime.datetime.now()} - 未检测到已连接的设备，请连接设备后重新运行程序。")
+        print("程序将在5秒后退出")
+        time.sleep(5)
+        exit()
 
-# 打印设备列表供用户选择
-for idx, device in enumerate(devices_list):
-    print(f"设备序号: {idx+1}, 设备名称: {device}")
+    for idx, device in enumerate(devices_list):
+        print(f"设备序号: {idx + 1}, 设备名称: {device}")
 
-selected_device_idx = int(input("请选择要安装OpenShamrock的设备序号: "))
-while selected_device_idx not in range(1, len(devices_list) + 1):
-    print("无效的选择，请重新输入：")
-    selected_device_idx = int(input("请选择要安装OpenShamrock的设备序号: "))
-
-selected_device = devices_list[selected_device_idx - 1].split('\t')[0]
+    user_input = input("请选择要安装OpenShamrock的设备序号: ")
+    
+    if user_input.isdigit():
+        selected_device_idx = int(user_input)
+        if selected_device_idx in range(1, len(devices_list) + 1):
+            selected_device = devices_list[selected_device_idx - 1].split('\t')[0]
+        else:
+            print("无效的选择，请重新输入：")
+    else:
+        print("无效的选择，请重新输入：")
 
 # 使用 adb 安装解压后的文件到所选设备
 apk_file_path = os.path.join(script_dir, extracted_file_path)
 subprocess.run(['adb', '-s', selected_device, 'install', apk_file_path])
+print(f"{datetime.datetime.now()} - 安装完成")
 
 # 删除安装包
 os.remove(apk_file_path)
+print("程序将在5秒后退出")
+time.sleep(5)
