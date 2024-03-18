@@ -21,5 +21,5 @@
 
 [banner]: https://socialify.git.ci/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/image?description=1&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto
 [releases]: https://img.shields.io/github/v/release/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade?style=for-the-badge
-[license]: https://img.shields.io/github/license//YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade?style=for-the-badge
+[license]: https://img.shields.io/github/license/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade?style=for-the-badge
 [releases-link]: [https://github.com/whitechi73/OpenShamrock/releases](https://github.com/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/releases/latest)https://github.com/YuYue-Amatsuki/OpenShamrock_Oneclick_Install_Upgrade/releases/latest
