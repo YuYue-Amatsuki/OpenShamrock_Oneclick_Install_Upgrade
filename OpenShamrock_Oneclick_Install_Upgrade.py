@@ -127,7 +127,7 @@ while selected_device is None:
 
 # 使用 adb 安装解压后的文件到所选设备
 apk_file_path = os.path.join(script_dir, extracted_file_path)
-subprocess.run(['adb', '-s', selected_device, 'install', apk_file_path])
+subprocess.run(['adb', '-s', selected_device, 'install', '-r', apk_file_path])
 print(f"{datetime.datetime.now()} - 安装完成")
 
 # 删除安装包
