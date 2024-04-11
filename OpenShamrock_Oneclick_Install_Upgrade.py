@@ -9,14 +9,6 @@ import logging
 import os
 import time
 
-url = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/master?preview'
-
-architectures = {
-    'all': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/master/Shamrock.*all\.zip',
-    'arm64': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/master/Shamrock.*arm64\.zip',
-    'x86_64': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/master/Shamrock.*x86_64\.zip'
-}
-
 # 获取logger实例
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -30,7 +22,40 @@ logger.addHandler(console_handler)
 
 logger.info(f"{datetime.datetime.now()} - 正在下载最新版OpenShamrock")
 
-response = requests.get(url)
+
+url_latest = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/master?preview'
+url_1_0_9 = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/v1.0.9?preview'
+
+versions = {
+    '1.1.0': url_latest,
+    '1.0.9': url_1_0_9
+}
+
+selected_version = None
+
+while selected_version is None:
+    print("请选择要下载的版本：")
+    for idx, version in enumerate(versions.keys()):
+        print(f"{idx+1}. {version}")
+
+    user_input = input("请输入版本序号：")
+
+    if user_input.isdigit():
+        selected_version_idx = int(user_input)
+        if selected_version_idx in range(1, len(versions) + 1):
+            selected_version = list(versions.keys())[selected_version_idx - 1]
+        else:
+            print("无效的选择，请重新输入：")
+    else:
+        print("无效的选择，请重新输入：")
+
+architectures = {
+    'all': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/.*/Shamrock.*all\.zip',
+    'arm64': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/.*/Shamrock.*arm64\.zip',
+    'x86_64': r'https://nightly\.link/whitechi73/OpenShamrock/workflows/build-apk/.*/Shamrock.*x86_64\.zip'
+}
+
+response = requests.get(versions[selected_version])
 html_content = response.text
 
 download_links = re.findall(r'href=[\'"](.*?)[\'"]', html_content)
