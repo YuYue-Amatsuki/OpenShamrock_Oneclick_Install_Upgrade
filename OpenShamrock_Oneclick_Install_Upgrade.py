@@ -27,8 +27,8 @@ url_latest = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/m
 url_1_0_9 = 'https://nightly.link/whitechi73/OpenShamrock/workflows/build-apk/v1.0.9?preview'
 
 versions = {
-    '1.1.0': url_latest,
-    '1.0.9': url_1_0_9
+    '1.1.0 (Kritor)': url_latest,
+    '1.0.9 (OneBot)': url_1_0_9
 }
 
 selected_version = None
